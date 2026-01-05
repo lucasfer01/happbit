@@ -1,0 +1,25 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# builds
+dist/
+build/
+coverage/
+.vite/
+.next/
+
+# logs
+*.log
+
+# env
+.env.*
+.env.*.local
+
+# OS/IDE
+.DS_Store
+.idea/
+.vscode/
+
+# misc
+tmp/
