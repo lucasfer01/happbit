@@ -1,15 +1,16 @@
 {
-  "name": "habits-2026",
+  "name": "happbit",
   "private": true,
   "scripts": {
     "dev": "concurrently -n web,api -c blue,green \"pnpm --filter web dev\" \"pnpm --filter api dev\"",
-    "build": "pnpm -r build",
-    "typecheck": "pnpm -r typecheck",
+    "db:up": "docker compose --env-file .env.local up -d",
+    "db:down": "docker compose --env-file .env.local down",
+    "db:ps": "docker compose --env-file .env.local ps",
+    "db:reset": "docker compose --env-file .env.local down -v && docker compose --env-file .env.local up -d",
     "lint": "biome check .",
+    "lint:fix": "biome check . --fix --unsafe",
     "format": "biome format --write .",
-    "db:up": "docker compose up -d",
-    "db:down": "docker compose down",
-    "db:logs": "docker compose logs -f --tail=100"
+    "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
