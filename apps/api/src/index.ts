@@ -1,9 +1,18 @@
+import 'dotenv/config'
 import cors from '@fastify/cors'
 import { PrismaClient } from '@prisma/client'
+import { PrismaPg } from '@prisma/adapter-pg'
 import Fastify from 'fastify'
 
 const app = Fastify({ logger: true })
-const prisma = new PrismaClient()
+
+const connectionString = process.env.DATABASE_URL
+if (!connectionString) {
+  throw new Error('Missing DATABASE_URL (create apps/api/.env or export env var).')
+}
+
+const adapter = new PrismaPg({ connectionString })
+const prisma = new PrismaClient({ adapter })
 
 await app.register(cors, {
   origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
