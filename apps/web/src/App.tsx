@@ -153,6 +153,7 @@ export default function App() {
     try {
       await apiFetch(apiUrl, `/habits/${encodeURIComponent(idStr)}/checkins`, {
         method: "POST",
+        body:  JSON.stringify({ }),
       });
 
       await loadAll();
