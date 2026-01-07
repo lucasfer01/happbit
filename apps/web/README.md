@@ -1,22 +1,16 @@
 # Happbit Web
 
 ## Requisitos
-- Node 22+
+- Node 22.x
 - pnpm
 
-## Setup
-1) Copiar env:
-   - `cp env.example .env`
+## Configuración
+Crear `apps/web/.env`:
 
-2) Instalar deps desde la raíz del monorepo:
-   - `pnpm install`
+VITE_API_URL=http://localhost:3001
 
 ## Correr
-Desde la raíz:
-- `pnpm --filter web dev --open`
+Desde el root del monorepo:
 
-Si el nombre del paquete no es `web`, corré:
-- `pnpm -C apps/web dev --open`
-
-## Health check
-La home hace GET a: `${VITE_API_URL}/health`
+pnpm -C apps/web install
+pnpm -C apps/web dev
